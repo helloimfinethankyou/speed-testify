@@ -155,9 +155,9 @@
                     <a href="index.html" class="text-2xl font-bold text-indigo-600 brand-name">Testtastic</a>
                 </div>
                 <div class="flex items-center">
-                    <a href="#features" class="text-gray-600 hover:text-indigo-600 px-3 py-2">Features</a>
-                    <a href="#pricing" class="text-gray-600 hover:text-indigo-600 px-3 py-2">Preise</a>
-                    <a href="payfunnel.html" class="ml-4 bg-indigo-600 text-white px-6 py-2 rounded-md hover:bg-indigo-700">Jetzt starten</a>
+                    <a href="#features" class="text-gray-600 hover:text-indigo-600 px-3 py-2">So funktioniert's</a>
+                    <a href="#roi-calculator" class="text-gray-600 hover:text-indigo-600 px-3 py-2">Preise & Kosten</a>
+                    <a href="payfunnel.html" class="ml-4 text-indigo-600 hover:text-indigo-700 px-3 py-2">Jetzt starten</a>
                 </div>
             </div>
         </div>
@@ -390,7 +390,7 @@
     </div>
 
     <!-- ROI Calculator Section -->
-    <div class="py-32 bg-gray-50">
+    <div id="roi-calculator" class="py-32 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
                 <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
@@ -606,6 +606,85 @@
                             <a href="payfunnel.html?plan=monthly" class="block w-full text-center px-6 py-3 border border-transparent rounded-md shadow text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">
                                 Monatsmodul wählen
                             </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Individuelle Anfrage Section -->
+    <div class="py-32 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    Individuelle Anfrage
+                </h2>
+                <p class="mt-4 text-lg text-gray-600">
+                    Sie haben spezielle Anforderungen? Lassen Sie uns darüber sprechen.
+                </p>
+            </div>
+            <div class="mt-10">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="px-6 py-8 sm:p-10">
+                        <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+                            <!-- Linke Seite: Vorteile -->
+                            <div>
+                                <h3 class="text-2xl font-semibold text-gray-900 mb-6">Ihre Vorteile</h3>
+                                <ul class="space-y-4">
+                                    <li class="flex items-start">
+                                        <svg class="h-6 w-6 text-indigo-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                        <p class="ml-3 text-gray-700">Maßgeschneiderte Lösungen für Ihr Unternehmen</p>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <svg class="h-6 w-6 text-indigo-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                        <p class="ml-3 text-gray-700">Flexible Testvolumen und Zeiträume</p>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <svg class="h-6 w-6 text-indigo-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                        <p class="ml-3 text-gray-700">Persönliche Beratung und Support</p>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <svg class="h-6 w-6 text-indigo-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                        <p class="ml-3 text-gray-700">Individuelle Preisgestaltung</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <!-- Rechte Seite: Kontaktformular -->
+                            <div>
+                                <form id="contactForm" class="space-y-6">
+                                    <div>
+                                        <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                                        <input type="text" id="name" name="name" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                                    </div>
+                                    <div>
+                                        <label for="email" class="block text-sm font-medium text-gray-700">E-Mail</label>
+                                        <input type="email" id="email" name="email" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                                    </div>
+                                    <div>
+                                        <label for="company" class="block text-sm font-medium text-gray-700">Unternehmen</label>
+                                        <input type="text" id="company" name="company" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                                    </div>
+                                    <div>
+                                        <label for="message" class="block text-sm font-medium text-gray-700">Ihre Anfrage</label>
+                                        <textarea id="message" name="message" rows="4" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"></textarea>
+                                    </div>
+                                    <div>
+                                        <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                            Anfrage senden
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
