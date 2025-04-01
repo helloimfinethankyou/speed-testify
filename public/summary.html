@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zusammenfassung - Testtastic</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        h1, h2, h3, .brand-name {
+            font-family: 'DM Serif Text', serif;
+            font-weight: 400;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-indigo-600 brand-name">Testtastic</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-3xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-lg border border-gray-200 overflow-hidden">
+            <div class="px-6 py-8 sm:p-10">
+                <div class="text-center">
+                    <h2 class="text-3xl font-extrabold text-gray-900">
+                        Zusammenfassung
+                    </h2>
+                    <p class="mt-4 text-lg text-gray-600">
+                        Überprüfen Sie Ihre Eingaben und starten Sie den Test
+                    </p>
+                </div>
+
+                <div class="mt-8 space-y-6">
+                    <!-- Prototyp -->
+                    <div class="border-b border-gray-200 pb-6">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-lg font-medium text-gray-900">Prototyp</h3>
+                                <div id="fileInfo" class="mt-2">
+                                    <div class="flex items-center space-x-3">
+                                        <svg class="h-5 w-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                        </svg>
+                                        <div>
+                                            <p id="fileName" class="text-sm font-medium text-gray-900"></p>
+                                            <p id="fileSize" class="text-xs text-green-600"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="productarea.html#prototyp" class="text-indigo-600 hover:text-indigo-500 text-sm font-medium">Bearbeiten</a>
+                        </div>
+                    </div>
+
+                    <!-- Zielgruppe -->
+                    <div class="border-b border-gray-200 pb-6">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-lg font-medium text-gray-900">Zielgruppe</h3>
+                                <p id="targetAudience" class="mt-2 text-gray-600"></p>
+                            </div>
+                            <a href="productarea.html#zielgruppe" class="text-indigo-600 hover:text-indigo-500 text-sm font-medium">Bearbeiten</a>
+                        </div>
+                    </div>
+
+                    <!-- Use Cases -->
+                    <div class="border-b border-gray-200 pb-6">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-lg font-medium text-gray-900">Use Cases / Hypothesen</h3>
+                                <p id="useCases" class="mt-2 text-gray-600"></p>
+                            </div>
+                            <a href="productarea.html#useCases" class="text-indigo-600 hover:text-indigo-500 text-sm font-medium">Bearbeiten</a>
+                        </div>
+                    </div>
+
+                    <!-- Testaufgaben -->
+                    <div class="border-b border-gray-200 pb-6">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-lg font-medium text-gray-900">Testaufgaben</h3>
+                                <p id="testTasks" class="mt-2 text-gray-600"></p>
+                            </div>
+                            <a href="productarea.html#testaufgaben" class="text-indigo-600 hover:text-indigo-500 text-sm font-medium">Bearbeiten</a>
+                        </div>
+                    </div>
+
+                    <!-- Sprache -->
+                    <div class="border-b border-gray-200 pb-6">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-lg font-medium text-gray-900">Testsprache</h3>
+                                <p id="language" class="mt-2 text-gray-600"></p>
+                            </div>
+                            <a href="productarea.html#sprache" class="text-indigo-600 hover:text-indigo-500 text-sm font-medium">Bearbeiten</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="mt-8 flex space-x-4">
+                    <a href="productarea.html" class="flex-1 bg-white border border-gray-300 text-gray-700 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-50 transition-colors text-center">
+                        Zurück
+                    </a>
+                    <a href="progress.html" class="flex-1 bg-indigo-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-indigo-700 transition-colors text-center">
+                        Test starten
+                    </a>
+                </div>
+
+                <div class="mt-6">
+                    <div class="text-sm text-gray-500">
+                        <p>Ihre Daten werden sicher verarbeitet und nicht an Dritte weitergegeben.</p>
+                        <p class="mt-2">Der Test wird automatisch gestartet, sobald Sie auf "Test starten" klicken.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 mt-16">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <p class="text-base text-gray-400">
+                    &copy; 2024 Testtastic. Alle Rechte vorbehalten.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Lade gespeicherte Daten aus dem localStorage
+            const savedData = JSON.parse(localStorage.getItem('testData') || '{}');
+            
+            // Zeige die gespeicherten Daten an
+            document.getElementById('targetAudience').textContent = savedData.targetAudience || 'Keine Angabe';
+            document.getElementById('useCases').textContent = savedData.useCases || 'Keine Angabe';
+            document.getElementById('testTasks').textContent = savedData.testTasks || 'Keine Angabe';
+            document.getElementById('language').textContent = savedData.language || 'Deutsch';
+            
+            // Zeige Datei-Informationen an, wenn vorhanden
+            const fileData = JSON.parse(localStorage.getItem('fileData') || '{}');
+            if (fileData.name) {
+                document.getElementById('fileName').textContent = fileData.name;
+                document.getElementById('fileSize').textContent = fileData.size;
+            }
+        });
+    </script>
+</body>
+</html> 

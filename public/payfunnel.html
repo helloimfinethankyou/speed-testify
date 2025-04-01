@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bezahlung - Testtastic</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        h1, h2, h3, .brand-name {
+            font-family: 'DM Serif Text', serif;
+            font-weight: 400;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-indigo-600 brand-name">Testtastic</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Payment Section -->
+    <div class="max-w-2xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-lg border border-gray-200 overflow-hidden">
+            <div class="px-6 py-8 sm:p-10">
+                <div class="text-center">
+                    <h2 class="text-3xl font-extrabold text-gray-900">
+                        Bezahlung
+                    </h2>
+                    <p class="mt-4 text-lg text-gray-600" id="planDescription">
+                        Ein Usability-Test für nur 7,99€
+                    </p>
+                </div>
+
+                <div class="mt-8">
+                    <div class="rounded-md bg-gray-50 px-6 py-4">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h3 class="text-lg font-medium text-gray-900" id="planTitle">Usability-Test</h3>
+                                <p class="text-sm text-gray-500" id="planSubtitle">Einzeltest mit 5 virtuellen Testern</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-lg font-medium text-gray-900" id="planPrice">7,99€</p>
+                                <p class="text-sm text-gray-500" id="planPeriod">inkl. MwSt.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6">
+                        <h4 class="text-lg font-medium text-gray-900">Zahlungsmethode</h4>
+                        <div class="mt-4 space-y-4">
+                            <!-- PayPal Button -->
+                            <button onclick="simulatePayment('paypal')" class="w-full flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-600 hover:bg-blue-700">
+                                <svg class="h-6 w-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L5.944 3.72a.641.641 0 0 1 .633-.54h4.677c3.573 0 5.372 1.745 5.372 5.182 0 3.437-1.799 5.182-5.372 5.182h-2.31l-1.123 8.923zm2.31-10.91h1.733c1.835 0 2.757-1.002 2.757-2.66 0-1.658-.922-2.66-2.757-2.66h-1.733l-.723 5.32z"/>
+                                </svg>
+                                Mit PayPal bezahlen
+                            </button>
+
+                            <!-- Stripe Button -->
+                            <button onclick="simulatePayment('stripe')" class="w-full flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">
+                                <svg class="h-6 w-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 6.219 2.585.377 3.336 1.111 3.336 2.282 0 .914-.796 1.431-2.108 1.431-1.72 0-4.516-.924-6.378-2.126l-.889 5.52c2.172 1.281 5.271 2.196 8.876 2.196 2.585 0 4.729-.654 6.223-1.872 1.544-1.218 2.347-3.063 2.347-5.289-.001-4.039-2.467-5.76-6.476-6.219z"/>
+                                </svg>
+                                Mit Kreditkarte bezahlen
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="mt-6">
+                        <div class="text-sm text-gray-500">
+                            <p>Nach erfolgreicher Zahlung werden Sie automatisch zur Test-Seite weitergeleitet.</p>
+                            <p class="mt-2">Ihre Daten werden sicher über SSL verschlüsselt übertragen.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 mt-16">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <p class="text-base text-gray-400">
+                    &copy; 2024 Testtastic. Alle Rechte vorbehalten.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="fixed inset-0 bg-gray-900 bg-opacity-50 hidden items-center justify-center">
+        <div class="bg-white p-8 rounded-lg border border-gray-200">
+            <div class="flex items-center">
+                <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-600"></div>
+                <span class="ml-3 text-lg text-gray-700">Verarbeite Zahlung...</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function simulatePayment(method) {
+            // Zeige Loading Overlay
+            const overlay = document.getElementById('loadingOverlay');
+            overlay.classList.remove('hidden');
+            overlay.classList.add('flex');
+
+            // Speichere Zahlungsmethode und Plan im localStorage
+            localStorage.setItem('paymentMethod', method);
+            localStorage.setItem('selectedPlan', getSelectedPlan());
+
+            // Simuliere Zahlungsverarbeitung
+            setTimeout(() => {
+                window.location.href = 'success.html';
+            }, 2000);
+        }
+
+        function getSelectedPlan() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('plan') || 'single';
+        }
+
+        function updatePlanDetails() {
+            const plan = getSelectedPlan();
+            const planTitle = document.getElementById('planTitle');
+            const planSubtitle = document.getElementById('planSubtitle');
+            const planPrice = document.getElementById('planPrice');
+            const planPeriod = document.getElementById('planPeriod');
+            const planDescription = document.getElementById('planDescription');
+
+            if (plan === 'monthly') {
+                planTitle.textContent = 'Monatsmodul';
+                planSubtitle.textContent = '5 Tests pro Monat';
+                planPrice.textContent = '29,99€';
+                planPeriod.textContent = 'pro Monat';
+                planDescription.textContent = 'Monatsmodul für regelmäßige Tests';
+            } else {
+                planTitle.textContent = 'Usability-Test';
+                planSubtitle.textContent = 'Einzeltest mit 5 virtuellen Testern';
+                planPrice.textContent = '7,99€';
+                planPeriod.textContent = 'inkl. MwSt.';
+                planDescription.textContent = 'Ein Usability-Test für nur 7,99€';
+            }
+        }
+
+        // Initialisiere die Plan-Details beim Laden der Seite
+        document.addEventListener('DOMContentLoaded', updatePlanDetails);
+    </script>
+</body>
+</html> 

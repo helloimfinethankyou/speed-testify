@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test konfigurieren - Testora</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        h1, h2, h3, .brand-name {
+            font-family: 'DM Serif Text', serif;
+            font-weight: 400;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold text-indigo-600 brand-name">Testora</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-3xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-lg border border-gray-200 overflow-hidden">
+            <div class="px-6 py-8 sm:p-10">
+                <div class="text-center">
+                    <h2 class="text-3xl font-extrabold text-gray-900">
+                        Test konfigurieren
+                    </h2>
+                    <p class="mt-4 text-lg text-gray-600">
+                        Laden Sie Ihren Prototypen hoch und konfigurieren Sie die Testparameter
+                    </p>
+                </div>
+
+                <form class="mt-8 space-y-6">
+                    <!-- Prototyp Upload -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">
+                            Prototyp hochladen
+                        </label>
+                        <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                            <div class="space-y-1 text-center">
+                                <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48">
+                                    <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                <div class="flex text-sm text-gray-600">
+                                    <label class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
+                                        <span>Datei auswählen</span>
+                                        <input type="file" class="sr-only" accept=".zip,.html">
+                                    </label>
+                                    <p class="pl-1">oder per Drag & Drop</p>
+                                </div>
+                                <p class="text-xs text-gray-500">
+                                    ZIP oder HTML bis 10MB
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Zielgruppe -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">
+                            Zielgruppe
+                        </label>
+                        <div class="mt-1">
+                            <textarea rows="3" class="border border-gray-200 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="Beschreiben Sie Ihre Zielgruppe (z.B. Alter, Beruf, Erfahrung)"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Use Cases -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">
+                            Use Cases / Hypothesen
+                        </label>
+                        <div class="mt-1">
+                            <textarea rows="3" class="border border-gray-200 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="Beschreiben Sie die zu testenden Use Cases und Hypothesen"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Testaufgaben -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">
+                            Testaufgaben
+                        </label>
+                        <div class="mt-1">
+                            <textarea rows="4" class="border border-gray-200 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="Liste der Testaufgaben (nummeriert)"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Sprache -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">
+                            Testsprache
+                        </label>
+                        <select class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                            <option>Deutsch</option>
+                            <option>Englisch</option>
+                        </select>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="mt-8">
+               <a href="progress.html" class="block w-full bg-blue-500 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-600 transition-colors text-center">
+                    Test starten
+                        </a>
+                        </button>
+                    </div>
+                </form>
+
+                <div class="mt-6">
+                    <div class="text-sm text-gray-500">
+                        <p>Ihre Daten werden sicher verarbeitet und nicht an Dritte weitergegeben.</p>
+                        <p class="mt-2">Der Test wird automatisch gestartet, sobald Sie das Formular absenden.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 mt-16">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <p class="text-base text-gray-400">
+                    &copy; 2024 Testora. Alle Rechte vorbehalten.
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 

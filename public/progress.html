@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test läuft - Testtastic</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        h1, h2, h3, .brand-name {
+            font-family: 'DM Serif Text', serif;
+            font-weight: 400;
+        }
+
+        .progress-bar {
+            transition: width 1s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-indigo-600 brand-name">Testtastic</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-3xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-lg border border-gray-200 overflow-hidden">
+            <div class="px-6 py-8 sm:p-10">
+                <div class="text-center">
+                    <div class="w-16 h-16 rounded-full bg-indigo-100 flex items-center justify-center mx-auto">
+                        <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h2 class="mt-4 text-3xl font-extrabold text-gray-900">
+                        Test läuft
+                    </h2>
+                    <p class="mt-4 text-lg text-gray-600">
+                        Ihr Usability-Test wird aktuell durchgeführt
+                    </p>
+                </div>
+
+                <!-- Progress Section -->
+                <div class="mt-8">
+                    <div class="space-y-4">
+                        <!-- Overall Progress -->
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-medium text-gray-700">Gesamtfortschritt</span>
+                                <span class="text-sm font-medium text-indigo-600" id="overallProgress">0%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="bg-indigo-600 h-2.5 rounded-full progress-bar" id="overallProgressBar" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <!-- Test Steps -->
+                        <div class="space-y-4">
+                            <div class="test-card bg-white border border-gray-200 rounded-lg p-4">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
+                                            <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-sm font-medium text-gray-900">Test vorbereitet</h3>
+                                            <p class="text-xs text-gray-500">Prototyp und Testparameter geladen</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-sm text-green-600">Abgeschlossen</span>
+                                </div>
+                            </div>
+
+                            <div class="test-card bg-white border border-gray-200 rounded-lg p-4">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center">
+                                            <svg class="w-4 h-4 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-sm font-medium text-gray-900">Tests durchführen</h3>
+                                            <p class="text-xs text-gray-500">5 virtuelle Tester aktiv</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-sm text-indigo-600" id="testProgress">0%</span>
+                                </div>
+                                <div class="mt-2 w-full bg-gray-200 rounded-full h-1.5">
+                                    <div class="bg-indigo-600 h-1.5 rounded-full progress-bar" id="testProgressBar" style="width: 0%"></div>
+                                </div>
+                            </div>
+
+                            <div class="test-card bg-white border border-gray-200 rounded-lg p-4">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
+                                            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-sm font-medium text-gray-900">Ergebnisse auswerten</h3>
+                                            <p class="text-xs text-gray-500">Wird automatisch durchgeführt</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-sm text-gray-400">Ausstehend</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Estimated Time -->
+                <div class="mt-8 text-center">
+                    <p class="text-sm text-gray-500">
+                        Geschätzte verbleibende Zeit: <span class="font-medium text-gray-900" id="estimatedTime">10 Minuten</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 mt-16">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <p class="text-base text-gray-400">
+                    &copy; 2024 Testtastic. Alle Rechte vorbehalten.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let overallProgress = 0;
+            let testProgress = 0;
+
+            const overallProgressBar = document.getElementById('overallProgressBar');
+            const overallProgressText = document.getElementById('overallProgress');
+            const testProgressBar = document.getElementById('testProgressBar');
+            const testProgressText = document.getElementById('testProgress');
+            const estimatedTime = document.getElementById('estimatedTime');
+
+            // Simuliere Fortschritt
+            function updateProgress() {
+                if (overallProgress < 100) {
+                    // Berechne den Fortschritt basierend auf der Zeit
+                    const elapsedTime = (Date.now() - startTime) / 1000; // Zeit in Sekunden
+                    overallProgress = Math.min((elapsedTime / 20) * 100, 100); // 20 Sekunden = 100%
+                    testProgress = Math.min((elapsedTime / 15) * 100, 100); // 15 Sekunden = 100%
+                    
+                    overallProgressBar.style.width = `${overallProgress}%`;
+                    overallProgressText.textContent = `${Math.round(overallProgress)}%`;
+                    testProgressBar.style.width = `${testProgress}%`;
+                    testProgressText.textContent = `${Math.round(testProgress)}%`;
+                    
+                    // Aktualisiere geschätzte Zeit
+                    const remainingSeconds = Math.max(0, 20 - elapsedTime);
+                    const remainingMinutes = Math.ceil(remainingSeconds / 60);
+                    estimatedTime.textContent = `${remainingMinutes} Minuten`;
+                }
+            }
+
+            // Starte Updates
+            const startTime = Date.now();
+            setInterval(updateProgress, 100);
+
+            // Automatische Navigation nach 20 Sekunden
+            setTimeout(() => {
+                window.location.href = 'pdf-summary.html';
+            }, 20000);
+        });
+    </script>
+</body>
+</html> 

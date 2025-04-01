@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testora - Test in Bearbeitung</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=DM+Serif+Text&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        h1, h2, h3, .brand-name {
+            font-family: 'DM Serif Text', serif;
+            font-weight: 400;
+        }
+
+        .progress-bar {
+            transition: width 1s ease-out;
+        }
+
+        .step {
+            transition: opacity 0.3s ease-out;
+        }
+
+        .step div {
+            transition: border-color 0.3s ease-out;
+        }
+
+        .step span {
+            transition: color 0.3s ease-out;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Progress Section -->
+    <div class="fixed inset-0 bg-white z-50">
+        <div class="max-w-3xl mx-auto px-4 py-16">
+            <!-- Progress Header -->
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-semibold text-gray-900 mb-4">
+                    Ihr Test wird durchgeführt
+                </h2>
+                <p class="text-lg text-gray-600">
+                    Bitte haben Sie einen Moment Geduld. Der Test dauert etwa 30 Sekunden.
+                </p>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="relative pt-1 mb-8">
+                <div class="overflow-hidden h-4 text-xs flex rounded-full bg-gray-200">
+                    <div class="progress-bar transition-all duration-1000 ease-out border border-gray-200 flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <!-- Progress Steps -->
+            <div class="space-y-6">
+                <div class="step flex items-center opacity-50">
+                    <div class="w-8 h-8 rounded-full border-2 border-gray-300 flex items-center justify-center mr-4">
+                        <span class="text-gray-500">1</span>
+                    </div>
+                    <span class="text-gray-500">Website wird analysiert</span>
+                </div>
+                <div class="step flex items-center opacity-50">
+                    <div class="w-8 h-8 rounded-full border-2 border-gray-300 flex items-center justify-center mr-4">
+                        <span class="text-gray-500">2</span>
+                    </div>
+                    <span class="text-gray-500">Performance-Tests werden durchgeführt</span>
+                </div>
+                <div class="step flex items-center opacity-50">
+                    <div class="w-8 h-8 rounded-full border-2 border-gray-300 flex items-center justify-center mr-4">
+                        <span class="text-gray-500">3</span>
+                    </div>
+                    <span class="text-gray-500">KI analysiert die Ergebnisse</span>
+                </div>
+                <div class="step flex items-center opacity-50">
+                    <div class="w-8 h-8 rounded-full border-2 border-gray-300 flex items-center justify-center mr-4">
+                        <span class="text-gray-500">4</span>
+                    </div>
+                    <span class="text-gray-500">PDF-Report wird erstellt</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Result Section (initially hidden) -->
+    <div class="fixed inset-0 bg-white z-50 hidden" id="resultSection">
+        <div class="max-w-4xl mx-auto px-4 py-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-semibold text-gray-900 mb-4">
+                    Ihr Test wurde erfolgreich abgeschlossen!
+                </h2>
+                <p class="text-lg text-gray-600 mb-8">
+                    Hier ist Ihre Zusammenfassung und der detaillierte PDF-Report.
+                </p>
+            </div>
+
+            <!-- Preview and Download Section -->
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Preview -->
+                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                    <h3 class="text-xl font-semibold mb-4">Vorschau</h3>
+                    <div class="preview-content">
+                        <!-- Preview content will be inserted here -->
+                    </div>
+                </div>
+
+                <!-- Download -->
+                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                    <h3 class="text-xl font-semibold mb-4">PDF-Report</h3>
+                    <p class="text-gray-600 mb-4">
+                        Laden Sie den vollständigen Report herunter, um detaillierte Einblicke zu erhalten.
+                    </p>
+                    <button class="w-full bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-colors">
+                        PDF herunterladen
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Progress Animation
+        function startProgress() {
+            const progressBar = document.querySelector('.progress-bar');
+            const steps = document.querySelectorAll('.step');
+            let currentStep = 0;
+            
+            // Funktion zum Aktualisieren der Schritte
+            function updateSteps(step) {
+                steps.forEach((s, index) => {
+                    if (index <= step) {
+                        s.classList.remove('opacity-50');
+                        s.classList.add('opacity-100');
+                        s.querySelector('div').classList.add('border-blue-500');
+                        s.querySelector('span').classList.add('text-blue-500');
+                    }
+                });
+            }
+
+            // Progress-Animation
+            const duration = 30000; // 30 Sekunden
+            const interval = 1000; // Update jede Sekunde
+            let elapsed = 0;
+
+            const timer = setInterval(() => {
+                elapsed += interval;
+                const progress = (elapsed / duration) * 100;
+                progressBar.style.width = `${Math.min(progress, 100)}%`;
+
+                // Schritte aktualisieren
+                const stepProgress = Math.floor((progress / 100) * 4);
+                if (stepProgress > currentStep) {
+                    currentStep = stepProgress;
+                    updateSteps(currentStep);
+                }
+
+                // Animation beenden
+                if (elapsed >= duration) {
+                    clearInterval(timer);
+                    showResults();
+                }
+            }, interval);
+        }
+
+        // Ergebnisse anzeigen
+        function showResults() {
+            document.querySelector('#resultSection').classList.remove('hidden');
+            // Hier können die Ergebnisse eingefügt werden
+        }
+
+        // Starte die Animation beim Laden der Seite
+        window.addEventListener('load', startProgress);
+    </script>
+</body>
+</html> 

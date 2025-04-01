@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testtastic - Schnelle Usability Tests</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        h1, h2, h3, .brand-name {
+            font-family: 'DM Serif Text', serif;
+            font-weight: 400; /* DM Serif Text kommt am besten in regular weight */
+        }
+        
+        .hero-text {
+            font-family: 'DM Serif Text', serif;
+            font-weight: 400;
+            letter-spacing: -0.025em;
+            line-height: 1.1; /* Engerer Zeilenabstand für die Serif-Schrift */
+            font-size: 2.5rem;
+        }
+
+        @media (min-width: 1024px) {
+            .hero-text {
+                font-size: 3.5rem;
+            }
+        }
+
+        /* Logo Slider Animation */
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .animate-scroll {
+            animation: scroll 20s linear infinite;
+            will-change: transform;
+        }
+
+        .animate-scroll:hover {
+            animation-play-state: paused;
+        }
+
+        /* Logo Slider */
+        .logo-slider-container {
+            margin-top: 4rem;
+            width: 100vw;
+            overflow: hidden;
+            position: relative;
+            padding: 2rem 0;
+            margin-left: calc(-50vw + 50%);
+            margin-right: calc(-50vw + 50%);
+            background: white;
+        }
+
+        .logo-track {
+            display: flex;
+            animation: scroll 16s linear infinite;
+            width: max-content;
+            gap: 2rem;
+        }
+
+        .logo-track:hover {
+            animation-play-state: paused;
+        }
+
+        .logo-slide {
+            flex: 0 0 150px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-slide img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-slide span {
+            margin-top: 0.5rem;
+            font-size: 0.75rem;
+            color: #4B5563;
+        }
+
+        .logo-slide:hover {
+            transform: scale(1.35);
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-50%));
+            }
+        }
+
+        /* Scroll Effect Styles */
+        .step-card {
+            transition: border-color 0.3s ease;
+        }
+
+        .step-card.active {
+            border-color: #4F46E5;
+        }
+
+        .step-card.inactive {
+            border-color: #E5E7EB;
+        }
+
+        .step-image {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .step-image.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .sticky {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background-color: rgb(249, 250, 251); /* bg-gray-50 */
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-indigo-600 brand-name">Testtastic</a>
+                </div>
+                <div class="flex items-center">
+                    <a href="#features" class="text-gray-600 hover:text-indigo-600 px-3 py-2">Features</a>
+                    <a href="#pricing" class="text-gray-600 hover:text-indigo-600 px-3 py-2">Preise</a>
+                    <a href="payfunnel.html" class="ml-4 bg-indigo-600 text-white px-6 py-2 rounded-md hover:bg-indigo-700">Jetzt starten</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="relative bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <!-- Text Content -->
+                <div class="px-4 sm:px-6 lg:px-8 py-8 lg:py-24 order-2 lg:order-1">
+                    <h1 class="tracking-tight font-extrabold text-gray-900 hero-text">
+                        <span class="block">Usability-Tests</span>
+                        <span class="block text-indigo-600">in nur 10 Minuten</span>
+                    </h1>
+                    <p class="mt-3 text-base text-gray-800 sm:text-lg md:mt-5 md:text-xl max-w-3xl">
+                        Starte deinen Usability-Test jetzt – schnell und günstig! Lade deinen Prototypen hoch und erhalte sofort die Ergebnisse!
+                    </p>
+                    <div class="mt-5 sm:mt-8">
+                        <a href="payfunnel.html" class="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
+                            Jetzt testen
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Image -->
+                <div class="relative h-[300px] lg:h-[600px] order-1 lg:order-2">
+                    <img 
+                        src="images/hyilmaz55_blank_white_background_--ar_5920_--v_6.1_fda01e49-88f5-41ad-babf-bfa0bd013dd2_1.png" 
+                        alt="KI-gestützte Website-Analyse"
+                        class="w-full h-full object-contain"
+                    >
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trust Section -->
+    <div class="py-24 bg-white">
+        <div class="max-w-full mx-auto">
+            <div class="text-center mb-8">
+                <h2 class="text-2xl font-semibold text-gray-900">
+                    Unternehmen deren Mitarbeiter schon Testtastic nutzen:
+                </h2>
+            </div>
+            
+            <!-- Logo Slider -->
+            <div class="logo-slider-container">
+                <div class="logo-track">
+                    <!-- First set of logos -->
+                    <div class="logo-slide">
+                        <img src="images/logos/apple.svg" alt="Apple">
+                        <span>Apple</span>
+                    </div>
+                    <div class="logo-slide">
+                        <img src="images/logos/nike.svg" alt="Nike">
+                        <span>Nike</span>
+                    </div>
+                    <div class="logo-slide">
+                        <img src="images/logos/mercedes.svg" alt="Mercedes-Benz">
+                        <span>Mercedes-Benz</span>
+                    </div>
+                    <div class="logo-slide">
+                        <img src="images/logos/bmw.svg" alt="BMW">
+                        <span>BMW</span>
+                    </div>
+                    <div class="logo-slide">
+                        <img src="images/logos/zalando.svg" alt="Zalando">
+                        <span>Zalando</span>
+                    </div>
+                    <div class="logo-slide">
+                        <img src="images/logos/lidl.svg" alt="Lidl">
+                        <span>Lidl</span>
+                    </div>
+                    
+                    <!-- Duplicate set for seamless loop -->
+                    <div class="logo-slide">
+                        <img src="images/logos/apple.svg" alt="Apple">
+                        <span>Apple</span>
+                    </div>
+                    <div class="logo-slide">
+                        <img src="images/logos/nike.svg" alt="Nike">
+                        <span>Nike</span>
+                    </div>
+                    <div class="logo-slide">
+                        <img src="images/logos/mercedes.svg" alt="Mercedes-Benz">
+                        <span>Mercedes-Benz</span>
+                    </div>
+                    <div class="logo-slide">
+                        <img src="images/logos/bmw.svg" alt="BMW">
+                        <span>BMW</span>
+                    </div>
+                    <div class="logo-slide">
+                        <img src="images/logos/zalando.svg" alt="Zalando">
+                        <span>Zalando</span>
+                    </div>
+                    <div class="logo-slide">
+                        <img src="images/logos/lidl.svg" alt="Lidl">
+                        <span>Lidl</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div id="features" class="py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    So funktioniert's
+                </h2>
+            </div>
+            <div class="mt-10">
+                <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
+                    <!-- Feature 1 -->
+                    <div class="text-center">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white mx-auto">
+                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            </svg>
+                        </div>
+                        <h3 class="mt-4 text-lg font-medium text-gray-900">Schnell & Einfach</h3>
+                        <p class="mt-2 text-base text-gray-500">
+                            Lade deinen Prototypen hoch und erhalte in nur 10 Minuten detaillierte Ergebnisse.
+                        </p>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div class="text-center">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white mx-auto">
+                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <h3 class="mt-4 text-lg font-medium text-gray-900">KI-gestützt</h3>
+                        <p class="mt-2 text-base text-gray-500">
+                            Unsere KI analysiert deinen Prototypen und simuliert reale Nutzerinteraktionen.
+                        </p>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div class="text-center">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white mx-auto">
+                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="mt-4 text-lg font-medium text-gray-900">Detaillierte Analyse</h3>
+                        <p class="mt-2 text-base text-gray-500">
+                            Erhalte umfassende Einblicke in die Nutzerfreundlichkeit deines Prototyps.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ablauf Section -->
+    <div class="py-32 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    Der Ablauf
+                </h2>
+                <p class="mt-4 text-lg text-gray-600">
+                    In drei einfachen Schritten zu Ihrem Usability-Test
+                </p>
+            </div>
+            
+            <div class="mt-20">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <!-- Steps Container -->
+                    <div class="space-y-8">
+                        <!-- Schritt 1 -->
+                        <div class="step-card bg-white p-6 rounded-lg border border-indigo-600 cursor-pointer">
+                            <div class="flex items-center">
+                                <div class="flex items-center justify-center h-8 w-8 rounded-full bg-indigo-600 text-white font-bold mr-4">
+                                    1
+                                </div>
+                                <h3 class="text-xl font-semibold text-gray-900">Einfach bezahlen</h3>
+                            </div>
+                            <p class="mt-4 text-gray-600">
+                                Wählen Sie zwischen Einzeltest oder Monatsmodul und bezahlen Sie sicher mit Ihrer Kreditkarte.
+                            </p>
+                        </div>
+
+                        <!-- Schritt 2 -->
+                        <div class="step-card bg-white p-6 rounded-lg border border-gray-200 cursor-pointer">
+                            <div class="flex items-center">
+                                <div class="flex items-center justify-center h-8 w-8 rounded-full bg-indigo-600 text-white font-bold mr-4">
+                                    2
+                                </div>
+                                <h3 class="text-xl font-semibold text-gray-900">Projekt definieren</h3>
+                            </div>
+                            <p class="mt-4 text-gray-600">
+                                Beschreiben Sie Ihr Projekt, definieren Sie die Zielgruppe, Use Cases und laden Sie Ihren Prototypen hoch.
+                            </p>
+                        </div>
+
+                        <!-- Schritt 3 -->
+                        <div class="step-card bg-white p-6 rounded-lg border border-gray-200 cursor-pointer">
+                            <div class="flex items-center">
+                                <div class="flex items-center justify-center h-8 w-8 rounded-full bg-indigo-600 text-white font-bold mr-4">
+                                    3
+                                </div>
+                                <h3 class="text-xl font-semibold text-gray-900">Ergebnisse erhalten</h3>
+                            </div>
+                            <p class="mt-4 text-gray-600">
+                                Nach nur 10 Minuten erhalten Sie eine detaillierte PDF-Dokumentation mit allen Testergebnissen.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Image Container -->
+                    <div class="flex items-center justify-center">
+                        <div class="step-image active w-full h-full rounded-lg flex items-center justify-center">
+                            <img src="./images/Schritt-1-Bezahlen.png" alt="Schritt 1: Bezahlen" class="w-full h-full object-cover rounded-lg">
+                        </div>
+                        <div class="step-image w-full h-full rounded-lg flex items-center justify-center">
+                            <img src="./images/Schritt-2-Projekt-Definieren.png" alt="Schritt 2: Projekt definieren" class="w-full h-full object-cover rounded-lg">
+                        </div>
+                        <div class="step-image w-full h-full rounded-lg flex items-center justify-center">
+                            <img src="./images/Schritt-3-Ergebnisse-Erhalten.png" alt="Schritt 3: Ergebnisse" class="w-full h-full object-cover rounded-lg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ROI Calculator Section -->
+    <div class="py-32 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    Ihre Zeit- und Kostenersparnis
+                </h2>
+                <p class="mt-4 text-lg text-gray-600">
+                    Vergleichen Sie die Kosten und Vorteile
+                </p>
+            </div>
+            <div class="mt-10">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Traditionelle Methode -->
+                    <div class="bg-gray-50 p-8 rounded-lg border border-gray-200">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-6">Traditionelle Methode</h3>
+                        <div class="space-y-6">
+                            <div>
+                                <p class="text-4xl font-bold text-indigo-600">2.000€ - 3.000€</p>
+                                <p class="text-gray-600 mt-2">pro Usability Test</p>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="flex items-start">
+                                    <svg class="h-6 w-6 text-indigo-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                    <p class="ml-3 text-gray-700">24-40 Stunden Zeitaufwand</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <svg class="h-6 w-6 text-indigo-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                    <p class="ml-3 text-gray-700">Komplexe Rekrutierung von Testpersonen</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <svg class="h-6 w-6 text-indigo-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                    <p class="ml-3 text-gray-700">Hohe Personalkosten für Durchführung und Auswertung</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Mit Testtastic -->
+                    <div class="bg-indigo-50 p-8 rounded-lg border border-gray-200 md:col-span-2">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-6">Mit Testtastic</h3>
+                        <div class="space-y-6">
+                            <div>
+                                <p class="text-4xl font-bold text-indigo-600">ab 7,99€</p>
+                                <p class="text-gray-600 mt-2">pro Usability Test</p>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="flex items-start">
+                                    <svg class="h-6 w-6 text-indigo-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                    <p class="ml-3 text-gray-700">Nur 10 Minuten Zeitaufwand</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <svg class="h-6 w-6 text-indigo-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                    <p class="ml-3 text-gray-700">Keine Rekrutierung notwendig</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <svg class="h-6 w-6 text-indigo-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                    <p class="ml-3 text-gray-700">Automatische Auswertung durch KI</p>
+                                </div>
+                            </div>
+                            <div class="mt-6 p-4 bg-white rounded-lg border border-indigo-600">
+                                <p class="text-lg font-semibold text-indigo-600">Ihre Ersparnis:</p>
+                                <p class="text-2xl font-bold text-indigo-600">bis zu 2.992,01€</p>
+                                <p class="text-sm text-gray-600 mt-1">pro Usability Test</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pricing Section -->
+    <div id="pricing" class="py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    Preise
+                </h2>
+                <p class="mt-4 text-lg text-gray-600">
+                    Wähle den passenden Plan für deinen Usability-Test
+                </p>
+            </div>
+            <div class="mt-10">
+                <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+                    <!-- Einzeltest -->
+                    <div class="rounded-lg border border-gray-200 overflow-hidden">
+                        <div class="px-6 py-8 bg-white sm:p-10 sm:pb-6">
+                            <div>
+                                <h3 class="inline-flex px-4 py-1 rounded-full text-sm font-semibold tracking-wide uppercase bg-indigo-100 text-indigo-600">
+                                    Einzeltest
+                                </h3>
+                                <p class="mt-4 text-lg leading-6 text-gray-500">
+                                    Perfekt für schnelle Tests und erste Einblicke
+                                </p>
+                                <div class="mt-4 flex items-baseline text-6xl font-extrabold text-gray-900">
+                                    <span>7,99€</span>
+                                    <span class="ml-1 text-2xl font-medium text-gray-500">/Test</span>
+                                </div>
+                                <p class="mt-5 text-lg text-gray-500">
+                                    Inklusive:
+                                </p>
+                                <ul class="mt-5 space-y-3">
+                                    <li class="flex items-start">
+                                        <div class="flex-shrink-0">
+                                            <svg class="h-6 w-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                            </svg>
+                                        </div>
+                                        <p class="ml-3 text-base text-gray-700">5 virtuelle Tester</p>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <div class="flex-shrink-0">
+                                            <svg class="h-6 w-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                            </svg>
+                                        </div>
+                                        <p class="ml-3 text-base text-gray-700">Detaillierte Analyse</p>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <div class="flex-shrink-0">
+                                            <svg class="h-6 w-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                            </svg>
+                                        </div>
+                                        <p class="ml-3 text-base text-gray-700">PDF & CSV Report</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="px-6 pt-6 pb-8 bg-gray-50 sm:px-10 sm:pt-10">
+                            <a href="payfunnel.html" class="block w-full text-center px-6 py-3 border border-transparent rounded-md shadow text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">
+                                Jetzt testen
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Monatsmodul -->
+                    <div class="rounded-lg border-2 border-indigo-500 overflow-hidden">
+                        <div class="px-6 py-8 bg-white sm:p-10 sm:pb-6">
+                            <div>
+                                <h3 class="inline-flex px-4 py-1 rounded-full text-sm font-semibold tracking-wide uppercase bg-indigo-100 text-indigo-600">
+                                    Monatsmodul
+                                </h3>
+                                <p class="mt-4 text-lg leading-6 text-gray-500">
+                                    Ideal für regelmäßige Tests und kontinuierliche Optimierung
+                                </p>
+                                <div class="mt-4 flex items-baseline text-6xl font-extrabold text-gray-900">
+                                    <span>29,99€</span>
+                                    <span class="ml-1 text-2xl font-medium text-gray-500">/Monat</span>
+                                </div>
+                                <div class="mt-2 text-sm text-green-600">
+                                    <span class="font-semibold">Ersparnis: 9,96€</span> (5 Tests zum Preis von 3,75)
+                                </div>
+                                <p class="mt-5 text-lg text-gray-500">
+                                    Inklusive:
+                                </p>
+                                <ul class="mt-5 space-y-3">
+                                    <li class="flex items-start">
+                                        <div class="flex-shrink-0">
+                                            <svg class="h-6 w-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                            </svg>
+                                        </div>
+                                        <p class="ml-3 text-base text-gray-700">Bis zu 5 Tests pro Monat</p>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <div class="flex-shrink-0">
+                                            <svg class="h-6 w-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                            </svg>
+                                        </div>
+                                        <p class="ml-3 text-base text-gray-700">5 virtuelle Tester pro Test</p>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <div class="flex-shrink-0">
+                                            <svg class="h-6 w-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                            </svg>
+                                        </div>
+                                        <p class="ml-3 text-base text-gray-700">Detaillierte Analyse</p>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <div class="flex-shrink-0">
+                                            <svg class="h-6 w-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                            </svg>
+                                        </div>
+                                        <p class="ml-3 text-base text-gray-700">PDF & CSV Reports</p>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <div class="flex-shrink-0">
+                                            <svg class="h-6 w-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                            </svg>
+                                        </div>
+                                        <p class="ml-3 text-base text-gray-700">Flexible Testplanung</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="px-6 pt-6 pb-8 bg-gray-50 sm:px-10 sm:pt-10">
+                            <a href="payfunnel.html?plan=monthly" class="block w-full text-center px-6 py-3 border border-transparent rounded-md shadow text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">
+                                Monatsmodul wählen
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <p class="text-base text-gray-400">
+                    &copy; <span id="currentYear"></span> Testtastic. Alle Rechte vorbehalten.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Dynamisches Copyright-Jahr
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Klick-Effekt für den Ablauf
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.step-card');
+            const images = document.querySelectorAll('.step-image');
+            let currentActiveCard = 0;
+
+            // Initialisiere die erste Karte als aktiv
+            cards[0].classList.add('active');
+            images[0].classList.add('active');
+
+            // Klick-Event für alle Karten
+            cards.forEach((card, index) => {
+                card.addEventListener('click', function() {
+                    // Deaktiviere aktuelle Karte und Bild
+                    cards[currentActiveCard].classList.remove('active');
+                    cards[currentActiveCard].classList.add('inactive');
+                    images[currentActiveCard].classList.remove('active');
+
+                    // Aktiviere neue Karte und Bild
+                    currentActiveCard = index;
+                    cards[currentActiveCard].classList.add('active');
+                    cards[currentActiveCard].classList.remove('inactive');
+                    images[currentActiveCard].classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
